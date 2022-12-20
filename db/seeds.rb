@@ -2,6 +2,8 @@ require 'faker'
 Customer.destroy_all
 Meal.destroy_all
 Order.destroy_all
+Restaurant.destroy_all
+RestaurantMeal.destroy_all
 
 puts '...Seeding data'
 
@@ -40,7 +42,26 @@ end
         customer_id: 1, 
         ordered_on: 1.week.ago
     )
-  puts "Created #{Order.count} meals"
+  puts "Created #{Order.count} orders"
 end
+
+6.times do |i|
+    Restaurant.create!(
+        name: Faker::Restaurant.name,
+        review: Faker::Restaurant.review
+    )
+  puts "Created #{Restaurant.count} restaurants"
+end
+
+RestaurantMeal.create(meal_id: 1, restaurant_id: 1)
+RestaurantMeal.create(meal_id: 2, restaurant_id: 2)
+RestaurantMeal.create(meal_id: 3, restaurant_id: 3)
+RestaurantMeal.create(meal_id: 4, restaurant_id: 4)
+RestaurantMeal.create(meal_id: 5, restaurant_id: 5)
+RestaurantMeal.create(meal_id: 6, restaurant_id: 6)
+RestaurantMeal.create(meal_id: 7, restaurant_id: 1)
+RestaurantMeal.create(meal_id: 8, restaurant_id: 2)
+RestaurantMeal.create(meal_id: 9, restaurant_id: 3)
+RestaurantMeal.create(meal_id: 10, restaurant_id: 4)
 
 puts '...Done seeding!'
